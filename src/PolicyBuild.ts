@@ -7,7 +7,7 @@ import RenumberStepsMultiplePolicies from './RenumberStepsMultiplePolicies';
 export default class PolicBuild {
     static Build({singlePolicy = false} = {}) {
 
-        var policyFilter: string = "**/*.{xml}";
+        var policyFilter: string = "**/*.*";
         var targetPolicy: string = "";
         if (singlePolicy) {
             var editor: vscode.TextEditor = vscode.window.activeTextEditor as vscode.TextEditor;
@@ -79,7 +79,7 @@ export default class PolicBuild {
                             progress.report({message: "Building policies"});
 
                             // Converted to await because the progress report doesn't work properly otherwise
-                            var uris = await vscode.workspace.findFiles(new vscode.RelativePattern(vscode.workspace.rootPath as string, policyFilter), `**/${environmentFolder}/**`);
+                            var uris = await vscode.workspace.findFiles(new vscode.RelativePattern(vscode.workspace.rootPath as string, policyFilter), `**/${environmentFolder}/**|appsettings\.json`);
                             
                             let policyFiles: PolicyFile[] = [];
                             uris.forEach((uri) => {
