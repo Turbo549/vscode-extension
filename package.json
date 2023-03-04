@@ -20,10 +20,7 @@
         "url": "https://github.com/azure-ad-b2c/vscode-extension.git"
     },
     "activationEvents": [
-        "*",
-        "onCommand:extension.insertTechnicalProfileIdp",
-        "onCommand:extension.insertTechnicalProfileRESTAPI",
-        "onCommand:extension.insertClaimType"
+        "*"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -289,14 +286,15 @@
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+        "test": "npm run compile && node ./out/test/runTest.js"
     },
     "devDependencies": {
         "@types/mocha": "^9.1.0",
         "@types/node": "^17.0.10",
-        "typescript": "^4.5.5",
-        "vscode": "^1.1.37"
+        "@types/vscode": "^1.30.0",
+        "@vscode/test-electron": "^2.3.0",
+        "mocha": "^9.1.0",
+        "typescript": "^4.5.5"
     },
     "dependencies": {
         "adal-node": "^0.2.3",

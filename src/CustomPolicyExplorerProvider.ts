@@ -23,7 +23,7 @@ export default class CustomPolicyExplorerProvider implements vscode.TreeDataProv
 		if (elementKey) {
 			this._onDidChangeTreeData.fire(elementKey);
 		} else {
-			this._onDidChangeTreeData.fire();
+			this._onDidChangeTreeData.fire(undefined);
 		}
 	}
 
